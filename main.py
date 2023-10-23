@@ -17,7 +17,20 @@ class Alchemist:
         self.__ranged = 0
         self.__necromancy = 0
         self.__laboratory = Laboratory()
-        self.__recipes = {}
+        self.__recipes = {
+            'Super Attack': ['Irit', 'Eye of Newt'],
+            'Super Strength': ['Kwuarm', 'Limpwurt Root'],
+            'Super Defence': ['Cadantine', 'White Berries'],
+            'Super Magic': ['Lantadyme', 'Potato Cactus'],
+            'Super Ranging': ['Dwarf Weed', 'Wine of Zamorak'],
+            'Super Necromancy': ['Arbuck', 'Blood of Orcus'],
+            'Extreme Attack': ['Avantoe','Super Attack'],
+            'Extreme Strength': ['Dwarf Weed','Super Strength'],
+            'Extreme Defence': ['Lantadyme','Super Defence'],
+            'Extreme Magic': ['Ground Mud Rune','Super Ranging'],
+            'Extreme Ranging': ['Grenwall Spike','Super Attack'],
+            'Extreme Necromancy': ['Ground Miasma Rune','Super Necromancy']
+        }
 
     def getLab(self):
         return self.__laboratory
@@ -68,6 +81,7 @@ class Potion(ABC):
     def getBoost(self):
         return self.__boost
     
+    #sets boost stat to whatever float is passed 
     def setBoost(self, boost: float):
         self.__boost = boost
 
@@ -100,6 +114,7 @@ class Herb(Reagent):
         super().__init__(name, potency)
         self.__grimy = True 
 
+    #changes grimy var to False and multiplies potency by 2.5, prints results
     def refine(self):
         self.__grimy = False
         self.__potency *= 2.5
