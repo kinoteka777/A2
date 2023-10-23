@@ -5,7 +5,8 @@
 # EmailID: fagck001
 # This is my own work as defined by the University's Academic Misconduct Policy.
 
-from abc import (ABC, abstractmethod) 
+from abc import (ABC, abstractmethod)
+from typing import Any 
 
 class Alchemist:
     def __init__(self):
@@ -38,9 +39,9 @@ class Alchemist:
 
 class Laboratory:
     def __init__(self):
-        self.__potions = Potion[]
-        self.__herbs = Herb[]
-        self.__catalysts = Catalyst[]
+        self.__potions = [] #Potion[]
+        self.__herbs = [] #Herb[]
+        self.__catalysts = [] #Catalyst[]
 
     def mixPotion(self, name: str, type: str, stat: str, primaryIngredient: str, secondaryIngredient: str):
         pass        
@@ -95,7 +96,27 @@ class ExtremePotion(Potion):
     pass
 
 class Herb(Reagent):
-    pass
+    def __init__(self, name: str, potency: float):
+        super().__init__(name, potency)
+        self.__grimy = True 
+
+    def refine(self):
+        self.__grimy = False
+        self.__potency *= 2.5
+        print(self.__name,'refined!\nGrimy =', self.__grimy,'\nPotency =', self.__potency)
+
+    def getQuality(self):
+        pass
 
 class Catalyst(Reagent):
-    pass
+    def __init__(self, name: str, potency: float, quality: float):
+        super().__init__(name, potency)
+        self.__quality = quality
+
+    def refine(self):
+        if self.__quality < 8.9:
+            self.__quality += 1.1
+            print(self.__name,'refined!\nQuality is now',self.__quality)
+        elif self.__quality >= 8.9:
+            self.__quality = 10
+            print(self.__name,'refined!\nQuality is now',self.__quality,'\nIt cannot be refined any further!')
