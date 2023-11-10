@@ -38,13 +38,13 @@ class Alchemist:
     def getRecipes(self):
         return self.__recipes
     
-    def mixPotion(self, recipe: str):
+    def mixPotion(self, recipe):
         pass
 
-    def drinkPotion(self, potion: Potion):
+    def drinkPotion(self, potion):
         pass
 
-    def collectReagent(self, reagent: Reagent, amount: int):
+    def collectReagent(self, reagent, amount):
         pass
 
     def refineReagents(self):
@@ -56,14 +56,14 @@ class Laboratory:
         self.__herbs = [] #Herb[]
         self.__catalysts = [] #Catalyst[]
 
-    def mixPotion(self, name: str, type: str, stat: str, primaryIngredient: str, secondaryIngredient: str):
+    def mixPotion(self, name, type, stat, primaryIngredient, secondaryIngredient):
         pass        
 
-    def addReagent(self, reagent: Reagent, amount: int):
+    def addReagent(self, reagent, amount):
         pass
 
 class Potion(ABC):
-    def __init__(self, name: str, stat: str, boost: float):
+    def __init__(self, name, stat, boost):
         self.__name = name
         self.__stat = stat
         self.__boost = boost
@@ -82,11 +82,11 @@ class Potion(ABC):
         return self.__boost
     
     #sets boost stat to whatever float is passed 
-    def setBoost(self, boost: float):
+    def setBoost(self, boost):
         self.__boost = boost
 
 class Reagent(ABC):
-    def __init__(self, name: str, potency: float):
+    def __init__(self, name, potency):
         self.__name = name
         self.__potency = potency
 
@@ -100,7 +100,7 @@ class Reagent(ABC):
     def getPotency(self):
         return self.__potency
     
-    def setPotency(self, potency: float):
+    def setPotency(self, potency):
         self.__potency = potency
 
 class SuperPotion(Potion):
@@ -110,7 +110,7 @@ class ExtremePotion(Potion):
     pass
 
 class Herb(Reagent):
-    def __init__(self, name: str, potency: float):
+    def __init__(self, name, potency):
         super().__init__(name, potency)
         self.__grimy = True 
 
@@ -124,7 +124,7 @@ class Herb(Reagent):
         pass
 
 class Catalyst(Reagent):
-    def __init__(self, name: str, potency: float, quality: float):
+    def __init__(self, name, potency, quality):
         super().__init__(name, potency)
         self.__quality = quality
 
